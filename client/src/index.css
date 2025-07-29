@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --primary-dark: hsl(207, 90%, 44%);
+  --secondary: hsl(120, 44%, 54%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(28, 95%, 56%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --primary-dark: hsl(207, 90%, 44%);
+  --secondary: hsl(120, 44%, 54%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(28, 95%, 56%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+.waveform {
+  background: linear-gradient(90deg, hsl(207, 90%, 54%) 0%, hsl(207, 90%, 64%) 50%, hsl(207, 90%, 54%) 100%);
+  background-size: 200% 100%;
+  animation: wave-flow 2s ease-in-out infinite;
+}
+
+.waveform-bar {
+  animation: wave-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes wave-flow {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 100% 0%; }
+}
+
+@keyframes wave-pulse {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+.listening-indicator {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px hsla(120, 44%, 54%, 0.3); }
+  50% { box-shadow: 0 0 25px hsla(120, 44%, 54%, 0.8); }
+}
+
+.trigger-word {
+  transition: all 0.3s ease;
+}
+
+.trigger-word.active {
+  animation: trigger-flash 0.5s ease-in-out;
+}
+
+@keyframes trigger-flash {
+  0%, 100% { background-color: hsla(28, 95%, 56%, 0.1); }
+  50% { background-color: hsla(28, 95%, 56%, 0.3); }
+}
+
+.sound-card {
+  transition: all 0.2s ease;
+}
+
+.sound-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Custom range slider styles */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-track {
+  background: hsl(240, 3.7%, 15.9%);
+  height: 8px;
+  border-radius: 4px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: hsl(207, 90%, 54%);
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-track {
+  background: hsl(240, 3.7%, 15.9%);
+  height: 8px;
+  border-radius: 4px;
+  border: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+  background: hsl(207, 90%, 54%);
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
